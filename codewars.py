@@ -155,30 +155,41 @@
 # except IOError as err:
 #     print(err)
 #
-def lccm(a,b): 
-    m = a*b
-    while a != 0 and b != 0:
-        if a > b:
-            a %= b
-        else:
-            b %= a
-    return m // (a+b)
+#def lccm(a,b): 
+#    m = a*b
+#    while a != 0 and b != 0:
+#        if a > b:
+#            a %= b
+#        else:
+#            b %= a
+#    return m // (a+b)
+#
+#def convert_fracts(lst):
+#    if len(lst):
+#        mx = lst[0][1]
+#        for i in range(1,len(lst)):
+#            mx = lccm(mx,lst[i][1])
+#        for i in range(len(lst)):
+#            lst[i][0] = lst[i][0] * (mx //lst[i][1]) 
+#            lst[i][1] = mx
+#    return lst
+#
+##print(lccm(4, 6))
+#print(convert_fracts([[1, 6], [1, 4], [1, 8]]))
+#print(convert_fracts([[1, 6], [1, 4]]))
+#print(convert_fracts([[1, 6]]))
+#print(convert_fracts([]))
 
-def convert_fracts(lst):
-    if len(lst):
-        mx = lst[0][1]
-        for i in range(1,len(lst)):
-            mx = lccm(mx,lst[i][1])
-        for i in range(len(lst)):
-            lst[i][0] = lst[i][0] * (mx //lst[i][1]) 
-            lst[i][1] = mx
-    return lst
+#print(lccm(91,43))
 
-#print(lccm(4, 6))
-print(convert_fracts([[1, 6], [1, 4], [1, 8]]))
-print(convert_fracts([[1, 6], [1, 4]]))
-print(convert_fracts([[1, 6]]))
-print(convert_fracts([]))
+import numpy as np
+def greatest_common_factor(seq):
+    seq = np.array(seq)
+    min = np.amin(seq)
+    ind_min = np.where(seq == np.amin(seq))[0]
+    #seq = np.delete(seq, ind_min)
+    seq = np.gcd(seq,min)
+    return np.amin(seq)
 
-
-
+array = [48, 99, 18]
+print(greatest_common_factor(array))
